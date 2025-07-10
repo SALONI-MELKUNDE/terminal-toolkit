@@ -44,3 +44,22 @@ nmcli connection up <CONN_NAME>
 2. ping -c 3 google.com
 3. hostnamectl
 
+
+###########################################################################################################
+
+
+## 📦 2. Create Default YUM Repositories
+
+Set up the default YUM repositories using the provided repository links:
+
+- **Repo 1**: `http://<link_given>/BaseOS`  
+- **Repo 2**: `http://<link_given>/AppStream`  
+
+> ⚠️ **Ensure** that `gpgcheck` is disabled and both repositories are enabled.  
+> This is required to install and update packages properly.
+
+## Ans: 
+
+
+
+
