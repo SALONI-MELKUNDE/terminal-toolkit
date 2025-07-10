@@ -23,26 +23,41 @@ Configure `node1.domainX.example.com` with the following static network settings
 ## Ans: 
 
 ## 1. Check available connections
+
+```bash
 nmcli connection show
+```
 
 ## 2. Set static IP, gateway, and DNS (replace <CONN_NAME> with actual name)
+
+```bash
 nmcli connection modify <CONN_NAME> \
   ipv4.addresses 172.24.X.5/24 \
   ipv4.gateway 172.24.X.254 \
   ipv4.dns 172.24.254.254 \
   ipv4.method manual
+```
 
 ## 3. Set hostname
+
+```bash
 hostnamectl set-hostname node1.domainX.example.com
+```
 
 ## 4. Apply the connection settings
+
+```bash
 nmcli connection down <CONN_NAME>
 nmcli connection up <CONN_NAME>
+```
 
 ## 5. Verify
+
+```bash
 1. ip a
 2. ping -c 3 google.com
 3. hostnamectl
+```
 
 
 ###########################################################################################################
@@ -59,6 +74,58 @@ Set up the default YUM repositories using the provided repository links:
 > This is required to install and update packages properly.
 
 ## Ans: 
+
+### YUM Repo Setup
+
+To configure the YUM repositories, follow these steps:
+
+```bash
+# Navigate to the yum repository directory
+cd /etc/yum.repos.d
+```
+
+```bash
+# Create a new repository configuration file
+vim rhel.repo
+```
+
+
+Add the following content to the file:
+
+```bash
+[BaseOS]
+name=RedHat Enterprise Linux 8.0 BaseOS
+baseurl=http://<link_given>/BaseOS
+enabled=1
+gpgcheck=0
+
+[AppStream]
+name=RedHat Enterprise Linux 8.0 AppStream
+baseurl=http://<link_given>/AppStream
+enabled=1
+gpgcheck=0
+```
+
+Save and exit:
+
+```bash
+:wq
+```
+
+Then refresh YUM and test:
+
+```bash
+yum clean all
+yum update -y
+yum repolist
+yum install httpd -y   # (Optional test installation)
+```
+
+🧪 Tip: If everything is set up correctly, yum repolist should show both BaseOS and AppStream as available repositories. 
+
+
+
+
 
 
 
