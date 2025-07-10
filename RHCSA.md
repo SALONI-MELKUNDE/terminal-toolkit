@@ -150,14 +150,14 @@ User and Group Setup
 groupadd sysadmins
 ```
 
-# Create users and assign them to sysadmins group as secondary group
+## Create users and assign them to sysadmins group as secondary group
 
 ```bash
 useradd -G sysadmins natasha
 useradd -G sysadmins harry
 ```
 
-# Create sarah without interactive shell and no group membership
+## Create sarah without interactive shell and no group membership
 
 ```bash
 useradd -s /sbin/nologin sarah
