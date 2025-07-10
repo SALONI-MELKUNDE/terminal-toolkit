@@ -177,9 +177,8 @@ echo "postroll" | passwd --stdin sarah
 
 🧪 Verify
 
-Use id natasha and id harry to confirm group membership.
-
-Use getent passwd sarah to confirm shell assignment.
+- Use id natasha and id harry to confirm group membership.
+- Use getent passwd sarah to confirm shell assignment.
 
 
 
