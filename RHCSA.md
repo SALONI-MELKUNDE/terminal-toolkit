@@ -1,3 +1,7 @@
+--------------------------------------------------------------------------# Section 1---------------------------------------------------------------------
+
+
+
 ## 📡 1. Network Setup
 
 Configure `node1.domainX.example.com` with the following static network settings:
@@ -22,13 +26,13 @@ Configure `node1.domainX.example.com` with the following static network settings
 
 ## Ans: 
 
-## 1. Check available connections
+1. Check available connections
 
 ```bash
 nmcli connection show
 ```
 
-## 2. Set static IP, gateway, and DNS (replace <CONN_NAME> with actual name)
+2. Set static IP, gateway, and DNS (replace <CONN_NAME> with actual name)
 
 ```bash
 nmcli connection modify <CONN_NAME> \
@@ -38,20 +42,20 @@ nmcli connection modify <CONN_NAME> \
   ipv4.method manual
 ```
 
-## 3. Set hostname
+3. Set hostname
 
 ```bash
 hostnamectl set-hostname node1.domainX.example.com
 ```
 
-## 4. Apply the connection settings
+4. Apply the connection settings
 
 ```bash
 nmcli connection down <CONN_NAME>
 nmcli connection up <CONN_NAME>
 ```
 
-## 5. Verify
+5. Verify
 
 ```bash
 1. ip a
@@ -77,7 +81,7 @@ Set up the default YUM repositories using the provided repository links:
 
 ### YUM Repo Setup
 
-To configure the YUM repositories, follow these steps:
+1. To configure the YUM repositories, follow these steps:
 
 ```bash
 # Navigate to the yum repository directory
@@ -90,7 +94,7 @@ vim rhel.repo
 ```
 
 
-Add the following content to the file:
+2. Add the following content to the file:
 
 ```bash
 [BaseOS]
@@ -106,13 +110,13 @@ enabled=1
 gpgcheck=0
 ```
 
-Save and exit:
+3. Save and exit:
 
 ```bash
 :wq
 ```
 
-Then refresh YUM and test:
+4. Then refresh YUM and test:
 
 ```bash
 yum clean all
@@ -143,21 +147,21 @@ Perform the following user and group configuration tasks:
 
 ## Ans: 
 
-User and Group Setup
+1. User and Group Setup
 
 ```bash
 # Create the group
 groupadd sysadmins
 ```
 
-## Create users and assign them to sysadmins group as secondary group
+2. Create users and assign them to sysadmins group as secondary group
 
 ```bash
 useradd -G sysadmins natasha
 useradd -G sysadmins harry
 ```
 
-## Create sarah without interactive shell and no group membership
+3. Create sarah without interactive shell and no group membership
 
 ```bash
 useradd -s /sbin/nologin sarah
