@@ -126,6 +126,48 @@ yum install httpd -y   # (Optional test installation)
 ###########################################################################################################
 
 
+## 👥 4. User/Group Management
+
+Perform the following user and group configuration tasks:
+
+- Create a group named `sysadmins`
+- Create a user `natasha` and add her to `sysadmins` as a secondary group
+- Create a user `harry` and add him to `sysadmins` as a secondary group
+- Create a user `sarah` without interactive shell access, and do not add her to `sysadmins`
+- Set the password for all three users to `postroll`
+
+> 🛠️ **Ensure**
+> - `natasha` and `harry` are part of `sysadmins` as secondary group members
+> - `sarah` cannot log in interactively (use `/sbin/nologin`)
+> - All passwords are set using `--stdin` method
+
+## Ans: 
+
+User and Group Setup
+
+```bash
+# Create the group
+groupadd sysadmins
+```
+
+# Create users and assign them to sysadmins group as secondary group
+
+```bash
+useradd -G sysadmins natasha
+useradd -G sysadmins harry
+```
+
+# Create sarah without interactive shell and no group membership
+
+```bash
+useradd -s /sbin/nologin sarah
+```
+
+
+
+
+
+
 
 
 
