@@ -167,6 +167,20 @@ useradd -G sysadmins harry
 useradd -s /sbin/nologin sarah
 ```
 
+4. Set passwords for all users
+
+```bash
+echo "postroll" | passwd --stdin natasha
+echo "postroll" | passwd --stdin harry
+echo "postroll" | passwd --stdin sarah
+```
+
+🧪 Verify
+
+Use id natasha and id harry to confirm group membership.
+
+Use getent passwd sarah to confirm shell assignment.
+
 
 
 
