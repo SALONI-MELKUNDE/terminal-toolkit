@@ -123,6 +123,8 @@ yum install httpd -y   # (Optional test installation)
 
 🧪 Tip: If everything is set up correctly, yum repolist should show both BaseOS and AppStream as available repositories. 
 
+###########################################################################################################
+
 
 
 
