@@ -182,7 +182,19 @@ echo "postroll" | passwd --stdin sarah
 
 ###########################################################################################################
 
+## 📁 4. Automount User Home Directory via NFS
 
+Configure `Node1` such that `remoteuserX` having home directory `/rhome/remoteuserX` gets mounted automatically upon login.  
+The NFS share would be: `utility.domainX.example.com:/rhome/remoteuserX`
+
+> 🛠️ **Ensure**  
+> - Automount is enabled using `autofs`  
+> - The user's home directory is mounted via NFS  
+> - `/etc/auto.master` and `/etc/auto.misc` are configured correctly  
+> - `nfs4` is used as the file system type  
+> - The service starts automatically on boot
+
+## Ans:
 
 
 
