@@ -209,7 +209,27 @@ The NFS share would be: `utility.domainX.example.com:/rhome/remoteuserX`
    ```bash
    /-  /etc/auto.misc
    ```
+3. **Edit the map file /etc/auto.misc**
 
+   Add the following line:
+   ```bash
+   /rhome/remoteuserX  -rw,sync,fstype=nfs4  utility.domainX.example.com:/rhome/remoteuserX
+   ```
+4. **Enable and restart autofs service**
+
+   ```bash
+   systemctl enable autofs
+   systemctl restart autofs
+   ```
+5. **Verify automount by switching user**
+
+   ```bash
+   su - remoteuserX
+   ```
+6. 
+
+   
+   
 
 
 
