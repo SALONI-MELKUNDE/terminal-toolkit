@@ -130,7 +130,7 @@ yum install httpd -y   # (Optional test installation)
 ###########################################################################################################
 
 
-## 👥 4. User/Group Management
+## 👥 3. User/Group Management
 
 Perform the following user and group configuration tasks:
 
@@ -180,6 +180,7 @@ echo "postroll" | passwd --stdin sarah
 - Use id natasha and id harry to confirm group membership.
 - Use getent passwd sarah to confirm shell assignment.
 
+###########################################################################################################
 
 
 
