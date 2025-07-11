@@ -196,7 +196,19 @@ The NFS share would be: `utility.domainX.example.com:/rhome/remoteuserX`
 
 ## Ans:
 
+### 🧪 Steps to Configure Automount for `/rhome/remoteuserX`
 
+1. **Install autofs**
+   
+   ```bash
+   yum install autofs -y
+   ```
+2. **Edit the master map file `/etc/auto.master`**
+
+   Add the following line:
+   ```bash
+   /-  /etc/auto.misc
+   ```
 
 
 
