@@ -347,7 +347,11 @@ Configure your system so that it synchronizes time with the NTP server `classroo
    timedatectl
    ```
 
-6. 
+6. Verify NTP source
+   ```bash
+   chronyc sources -v
+   ```
+###########################################################################################################
 
 
 
