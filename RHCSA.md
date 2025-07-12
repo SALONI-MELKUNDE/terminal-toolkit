@@ -351,6 +351,14 @@ Configure your system so that it synchronizes time with the NTP server `classroo
    ```bash
    chronyc sources -v
    ```
+
+Output: 
+```bash
+MS Name/IP address      Stratum Poll Reach LastRx Last sample
+===============================================================================
+^* classroom.example.com     8     6    17     3    +1783ns[+133us] +/- 265us
+```
+
 ###########################################################################################################
 
 
