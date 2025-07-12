@@ -253,7 +253,21 @@ Find all files on the system that are owned by the user `student`, and copy them
    find / -user student -exec cp -avp {} /var/liststationx/ \;
    ```
 
-   
+###########################################################################################################
+
+## ⏰ 8. Configure Cron Job for User `natasha`
+
+The user **Natasha** must configure a cron job that runs **daily at 06:25 local time** and executes the command:  
+`/bin/echo "Hello Test"`
+
+> 🛠️ **Ensure**
+> - The cron job runs at the correct time
+> - It runs under the `natasha` user's crontab
+> - The `crond` service is running
+
+## Ans:
+
+
 
 
 
