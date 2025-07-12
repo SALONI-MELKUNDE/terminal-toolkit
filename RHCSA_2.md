@@ -59,7 +59,7 @@ gpgcheck=0
 EOF
 ```
 
-## Verify repo availability
+Verify repo availability
 ```bash
 dnf repolist
 ```
