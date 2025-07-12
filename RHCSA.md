@@ -375,6 +375,29 @@ useradd -u 1088 -s /sbin/nologin stationX
 - 🔒 `-u 1088` sets the user ID
 - 🔒 `-s /sbin/nologin` disables login for the user
 
+###########################################################################################################
+
+## 🗃️ 12. Create `/my_backup.tar.gz` from `/usr/local` Directory
+
+Create a compressed archive file `/my_backup.tar.gz` containing the contents of the `/usr/local` directory.
+
+## Ans:
+
+### 🧪 Command to Create the Archive
+
+```bash
+tar -cvzf /my_backup.tar.gz /usr/local
+```
+
+- 📦 -c = create archive
+- 📦 -v = verbose mode (shows progress)
+- 📦 -z = compress with gzip
+- 📦 -f = specify filename
+
+🔍 Compression Extensions
+- .gz → gzip (-z)
+- .bz2 → bzip2 (-j)
+- .xz → xz (-J)
 
 
 
