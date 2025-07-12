@@ -112,3 +112,45 @@ Extend a **swap partition** of size **512 MB** on `/dev/vdb` and ensure it is **
 - w       → write changes
 
 
+3. Apply changes
+   ```bash
+   partprobe
+   lsblk
+   ```
+   
+4. Format the new partition as swap
+   ```bash
+   mkswap /dev/vdb2
+   ```
+
+5. Get UUID
+   ```bash
+   blkid
+   ```
+
+6. Edit fstab and add the UUID
+   ```bash
+   vim /etc/fstab
+   ```
+
+7. Add line like:
+   ```bash
+   UUID="your-uuid-here" swap swap defaults 0 0
+   ```
+
+8. Save and exit
+   ```bash
+   :wq
+   ```
+
+9. Activate swap
+   ```bash
+   swapon -a
+   swapon -s
+   ```
+
+10. Final check
+    ```bash
+    df -h
+    free -h
+    ```
