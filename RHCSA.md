@@ -226,7 +226,20 @@ The NFS share would be: `utility.domainX.example.com:/rhome/remoteuserX`
    ```bash
    su - remoteuserX
    ```
-6. 
+
+###########################################################################################################
+
+## 🔍 6. Locate and Copy All Files Owned by User `student`
+
+Find all files on the system that are owned by the user `student`, and copy them into the directory `/var/liststationx`.
+
+> 🛠️ **Ensure**  
+> - All files owned by the user `student` are identified  
+> - A directory `/var/liststationx` is created  
+> - Files are copied with attributes preserved  
+
+## Ans:
+
 
    
    
