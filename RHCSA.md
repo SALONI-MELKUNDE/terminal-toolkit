@@ -372,6 +372,8 @@ Create a user `stationX` on your system which has **no login access** and is ass
 ```bash
 useradd -u 1088 -s /sbin/nologin stationX
 ```
+- 🔒 `-u 1088` sets the user ID
+- 🔒 `-s /sbin/nologin` disables login for the user
 
 
 
