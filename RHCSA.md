@@ -198,30 +198,30 @@ The NFS share would be: `utility.domainX.example.com:/rhome/remoteuserX`
 
 ### 🧪 Steps to Configure Automount for `/rhome/remoteuserX`
 
-1. **Install autofs**
+1. Install autofs
    
    ```bash
    yum install autofs -y
    ```
-2. **Edit the master map file `/etc/auto.master`**
+2. Edit the master map file `/etc/auto.master`
 
    Add the following line:
    ```bash
    /-  /etc/auto.misc
    ```
-3. **Edit the map file /etc/auto.misc**
+3. Edit the map file /etc/auto.misc
 
    Add the following line:
    ```bash
    /rhome/remoteuserX  -rw,sync,fstype=nfs4  utility.domainX.example.com:/rhome/remoteuserX
    ```
-4. **Enable and restart autofs service**
+4. Enable and restart autofs service
 
    ```bash
    systemctl enable autofs
    systemctl restart autofs
    ```
-5. **Verify automount by switching user**
+5. Verify automount by switching user
 
    ```bash
    su - remoteuserX
@@ -242,12 +242,12 @@ Find all files on the system that are owned by the user `student`, and copy them
 
 ### 🧪 Steps to Locate and Copy Files of User `student`
 
-1. **Create target directory**
+1. Create target directory
 
    ```bash
    mkdir /var/liststationx
    ```
-2. **Find and copy files owned by student**
+2. Find and copy files owned by student
 
    ```bash
    find / -user student -exec cp -avp {} /var/liststationx/ \;
