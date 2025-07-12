@@ -215,7 +215,7 @@ The NFS share would be: `utility.domainX.example.com:/rhome/remoteuserX`
 
 ###########################################################################################################
 
-## 🔍 6. Locate and Copy All Files Owned by User `student`
+## 🔍 5. Locate and Copy All Files Owned by User `student`
 
 Find all files on the system that are owned by the user `student`, and copy them into the directory `/var/liststationx`.
 
@@ -240,7 +240,7 @@ Find all files on the system that are owned by the user `student`, and copy them
 
 ###########################################################################################################
 
-## ⏰ 8. Configure Cron Job for User `natasha`
+## ⏰ 6. Configure Cron Job for User `natasha`
 
 The user **Natasha** must configure a cron job that runs **daily at 06:25 local time** and executes the command:  
 `/bin/echo "Hello Test"`
@@ -281,7 +281,7 @@ The user **Natasha** must configure a cron job that runs **daily at 06:25 local 
 
 ###########################################################################################################
 
-## 🗂️ 9. Copy and Configure Permissions for `/var/tmp/fstab`
+## 🗂️ 7. Copy and Configure Permissions for `/var/tmp/fstab`
 
 Copy the file `/etc/fstab` to `/var/tmp`. Configure the permissions of `/var/tmp/fstab` so that:
 
@@ -307,7 +307,7 @@ getfacl /var/tmp/fstab
 ```
 ###########################################################################################################
 
-## 🕒 10. Configure System as an NTP Client of `classroom.example.com`
+## 🕒 8. Configure System as an NTP Client of `classroom.example.com`
 
 Configure your system so that it synchronizes time with the NTP server `classroom.example.com`.
 
@@ -361,7 +361,7 @@ MS Name/IP address      Stratum Poll Reach LastRx Last sample
 
 ###########################################################################################################
 
-## 👤 11. Create a User `stationX` Without Login Access and UID 1088
+## 👤 9. Create a User `stationX` Without Login Access and UID 1088
 
 Create a user `stationX` on your system which has **no login access** and is assigned **user ID 1088**.
 
@@ -377,7 +377,7 @@ useradd -u 1088 -s /sbin/nologin stationX
 
 ###########################################################################################################
 
-## 🗃️ 12. Create `/my_backup.tar.gz` from `/usr/local` Directory
+## 🗃️ 10. Create `/my_backup.tar.gz` from `/usr/local` Directory
 
 Create a compressed archive file `/my_backup.tar.gz` containing the contents of the `/usr/local` directory.
 
@@ -401,7 +401,7 @@ tar -cvzf /my_backup.tar.gz /usr/local
 
 ###########################################################################################################
 
-## 🔍 13. Find Words Starting with `ich` and Save to `/root/result.txt`
+## 🔍 11. Find Words Starting with `ich` and Save to `/root/result.txt`
 
 Find all words that **start with "ich"** from the file `/usr/share/dict/words` and save the matching lines to `/root/result.txt`.
 
@@ -418,7 +418,7 @@ grep ^ich /usr/share/dict/words > /root/result.txt
 
 ###########################################################################################################
 
-## 🌐 14. Enable Apache to Listen on Port `18989/tcp` for `alpha.domainX.example.com`
+## 🌐 12. Enable Apache to Listen on Port `18989/tcp` for `alpha.domainX.example.com`
 
 Apache service is not responding on port `18989/tcp`. Configure the system so it listens on port `18989/tcp`.
 
@@ -484,6 +484,8 @@ Apache service is not responding on port `18989/tcp`. Configure the system so it
    ```
 
 💡 To test with GUI apps like Firefox over SSH, use ssh -X to enable X11 forwarding.
+
+###########################################################################################################
 
 
 
