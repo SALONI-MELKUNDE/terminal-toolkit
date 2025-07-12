@@ -418,5 +418,44 @@ grep ^ich /usr/share/dict/words > /root/result.txt
 
 ###########################################################################################################
 
+## 🌐 14. Enable Apache to Listen on Port `18989/tcp` for `alpha.domainX.example.com`
+
+Apache service is not responding on port `18989/tcp`. Configure the system so it listens on port `18989/tcp`.
+
+> 🛠️ **Ensure**
+> - Apache is listening on the new port
+> - SELinux and firewall settings are updated
+> - Apache is restarted and enabled
+
+## Ans:
+
+### 🧪 Step-by-Step Instructions
+
+1. **Check current allowed ports**
+   ```bash
+   semanage port -l | grep http
+   ```
+   
+2. Edit Apache configuration
+   ```bash
+   vim /etc/httpd/conf/httpd.conf
+   ```
+   
+   > - Search for the Listen directive:
+   ```bash
+   /Listen
+   ```
+   > - You will see:
+    ```bash
+    Listen 80
+    ```
+
+   > - Add:
+    ```bash
+    Listen 18989
+    ```
+
+3. 
+
 
 
