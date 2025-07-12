@@ -361,6 +361,17 @@ MS Name/IP address      Stratum Poll Reach LastRx Last sample
 
 ###########################################################################################################
 
+## 👤 11. Create a User `stationX` Without Login Access and UID 1088
+
+Create a user `stationX` on your system which has **no login access** and is assigned **user ID 1088**.
+
+## Ans:
+
+### 🧪 Command to Create the User
+
+```bash
+useradd -u 1088 -s /sbin/nologin stationX
+```
 
 
 
