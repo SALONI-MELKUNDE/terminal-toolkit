@@ -485,7 +485,7 @@ Apache service is not responding on port `18989/tcp`. Configure the system so it
 
 💡 To test with GUI apps like Firefox over SSH, use ssh -X to enable X11 forwarding.
 
-###########################################################################################################
+
 
 
 
