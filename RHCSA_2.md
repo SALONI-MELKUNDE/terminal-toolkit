@@ -27,6 +27,14 @@ Configure your system to enable access to the **BaseOS** and **AppStream** repos
 > - Both repositories are created using `.repo` files in `/etc/yum.repos.d/`
 > - Repositories are enabled and visible with `dnf repolist`
 
+
+## ✅ Verification Steps
+
+1. Run `dnf repolist` to check that `BaseOS` and `AppStream` are listed.
+2. Use `ls /etc/yum.repos.d/` to verify the `.repo` files exist.
+3. View file content with `cat` to confirm correct `baseurl` values.
+
+
 ## Ans:
 
 ```bash
@@ -51,14 +59,9 @@ gpgcheck=0
 EOF
 ```
 
-# Verify repo availability
+## Verify repo availability
 ```bash
 dnf repolist
 ```
 
-## ✅ Verification Steps
-
-1. Run `dnf repolist` to check that `BaseOS` and `AppStream` are listed.
-2. Use `ls /etc/yum.repos.d/` to verify the `.repo` files exist.
-3. View file content with `cat` to confirm correct `baseurl` values.
 
