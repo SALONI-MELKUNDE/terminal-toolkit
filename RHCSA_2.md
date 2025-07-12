@@ -106,8 +106,8 @@ Extend a **swap partition** of size **512 MB** on `/dev/vdb` and ensure it is **
 - In fdisk prompt:
 - p       → print partitions
 - n       → new partition
--          → First Sector: <Enter>
--          → Last Sector: +512M
+-         → First Sector: <Enter>
+-         → Last Sector: +512M
 - t       → type → 82 (Linux swap)
 - w       → write changes
 
