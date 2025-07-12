@@ -154,3 +154,60 @@ Extend a **swap partition** of size **512 MB** on `/dev/vdb` and ensure it is **
     df -h
     free -h
     ```
+
+###########################################################################################################
+
+## 📏 3. Resize Logical Volume to 800MB
+
+Resize an existing **logical volume** (e.g., `/dev/myvg/mylv`) to **800MB**.  
+It should be able to store data between **765MB to 800MB** safely.
+
+### 📁 Logical Volume Details
+
+- **Volume Group**: `myvg`
+- **Logical Volume**: `mylv`
+- **Target Size**: 800MB
+- **Command Used**: `lvextend` and `resize2fs`
+
+> 🛠️ **Ensure**
+> - The logical volume is resized to exactly 800MB
+> - You use `resize2fs` to grow the file system
+> - Data is not lost during resizing
+> - You verify the volume size using `lvs` or `df -h`
+
+## ✅ Verification Steps
+
+1. Use `lvdisplay` to confirm the new size.
+2. Run `df -h` to check filesystem space.
+3. Ensure the volume can store 765MB to 800MB of data.
+
+## Ans:
+
+1. Check current disk usage
+   ```bash
+   df -h
+   ```
+
+2. Display logical volume details
+   ```bash
+   lvdisplay
+   ```
+
+3. Resize the logical volume
+   ```bash
+   lvextend -L 800M /dev/myvg/mylv
+   ```
+
+4. Resize the filesystem on the LV
+   ```bash
+   resize2fs /dev/myvg/mylv
+   ```
+
+5. Verify volume again
+   ```bash
+   lvdisplay
+   df -h
+   ```
+
+
+
