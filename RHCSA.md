@@ -77,44 +77,44 @@ Set up the default YUM repositories using the provided repository links:
 ### YUM Repo Setup
 
 1. To configure the YUM repositories, follow these steps:
-```bash
-# Navigate to the yum repository directory
-cd /etc/yum.repos.d
-```
+   ```bash
+   # Navigate to the yum repository directory
+   cd /etc/yum.repos.d
+   ```
 
-```bash
-# Create a new repository configuration file
-vim rhel.repo
-```
+   ```bash
+   # Create a new repository configuration file
+   vim rhel.repo
+   ```
 
 
 2. Add the following content to the file:
-```bash
-[BaseOS]
-name=RedHat Enterprise Linux 8.0 BaseOS
-baseurl=http://<link_given>/BaseOS
-enabled=1
-gpgcheck=0
+   ```bash
+   [BaseOS]
+   name=RedHat Enterprise Linux 8.0 BaseOS
+   baseurl=http://<link_given>/BaseOS
+   enabled=1
+   gpgcheck=0
 
-[AppStream]
-name=RedHat Enterprise Linux 8.0 AppStream
-baseurl=http://<link_given>/AppStream
-enabled=1
-gpgcheck=0
-```
+   [AppStream]
+   name=RedHat Enterprise Linux 8.0 AppStream
+   baseurl=http://<link_given>/AppStream
+   enabled=1
+   gpgcheck=0
+   ```
 
 3. Save and exit:
-```bash
-:wq
-```
+   ```bash
+   :wq
+   ```
 
 4. Then refresh YUM and test:
-```bash
-yum clean all
-yum update -y
-yum repolist
-yum install httpd -y   # (Optional test installation)
-```
+   ```bash
+   yum clean all
+   yum update -y
+   yum repolist
+   yum install httpd -y   # (Optional test installation)
+   ```
 
 🧪 Tip: If everything is set up correctly, yum repolist should show both BaseOS and AppStream as available repositories. 
 
@@ -139,28 +139,28 @@ Perform the following user and group configuration tasks:
 ## Ans: 
 
 1. User and Group Setup
-```bash
-# Create the group
-groupadd sysadmins
-```
+   ```bash
+   # Create the group
+   groupadd sysadmins
+   ```
 
 2. Create users and assign them to sysadmins group as secondary group
-```bash
-useradd -G sysadmins natasha
-useradd -G sysadmins harry
-```
+   ```bash
+   useradd -G sysadmins natasha
+   useradd -G sysadmins harry
+   ```
 
 3. Create sarah without interactive shell and no group membership
-```bash
-useradd -s /sbin/nologin sarah
-```
+   ```bash
+   useradd -s /sbin/nologin sarah
+   ```
 
 4. Set passwords for all users
-```bash
-echo "postroll" | passwd --stdin natasha
-echo "postroll" | passwd --stdin harry
-echo "postroll" | passwd --stdin sarah
-```
+   ```bash
+   echo "postroll" | passwd --stdin natasha
+   echo "postroll" | passwd --stdin harry
+   echo "postroll" | passwd --stdin sarah
+   ```
 
 🧪 Verify
 
@@ -186,30 +186,29 @@ The NFS share would be: `utility.domainX.example.com:/rhome/remoteuserX`
 ### 🧪 Steps to Configure Automount for `/rhome/remoteuserX`
 
 1. Install autofs
-```bash
-yum install autofs -y
-```
+   ```bash
+   yum install autofs -y
+   ```
 
 2. Edit the master map file `/etc/auto.master`
-Add the following line:
-```bash
-/-  /etc/auto.misc
-```
+   Add the following line:
+   ```bash
+   /-  /etc/auto.misc
+   ```
 
 3. Edit the map file /etc/auto.misc
-
    Add the following line:
    ```bash
    /rhome/remoteuserX  -rw,sync,fstype=nfs4  utility.domainX.example.com:/rhome/remoteuserX
    ```
+   
 4. Enable and restart autofs service
-
    ```bash
    systemctl enable autofs
    systemctl restart autofs
    ```
+   
 5. Verify automount by switching user
-
    ```bash
    su - remoteuserX
    ```
@@ -233,6 +232,7 @@ Find all files on the system that are owned by the user `student`, and copy them
    ```bash
    mkdir /var/liststationx
    ```
+   
 2. Find and copy files owned by student
    ```bash
    find / -user student -exec cp -avp {} /var/liststationx/ \;
@@ -254,12 +254,30 @@ The user **Natasha** must configure a cron job that runs **daily at 06:25 local 
 
 ### 🧪 Steps to Configure the Cron Job
 
-1. **Edit Natasha's crontab**
+1. Edit Natasha's crontab
    ```bash
    crontab -eu natasha
+   ```
    
-
-
+2. Add the following line to schedule the job at 06:25 daily
+   ```bash
+   25 06 * * * /bin/echo Hello_World
+   ```
+   
+3. Restart the cron service
+   ```bash
+   systemctl restart crond
+   ```
+   
+4. Verify the crontab job for Natasha
+   ```bash
+   crontab -lu natasha
+   ```
+   
+### 🔁 If the same job is to run every minute from 06:00 to 06:59:
+    ```bash
+    */1 06 * * * /bin/echo Hello_World
+    ```
 
 
 
