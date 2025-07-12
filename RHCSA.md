@@ -27,36 +27,36 @@ Configure `node1.domainX.example.com` with the following static network settings
 ## Ans: 
 
 1. Check available connections
-```bash
-nmcli connection show
-```
+   ```bash
+   nmcli connection show
+   ```
 
 2. Set static IP, gateway, and DNS (replace <CONN_NAME> with actual name)
-```bash
-nmcli connection modify <CONN_NAME> \
-  ipv4.addresses 172.24.X.5/24 \
-  ipv4.gateway 172.24.X.254 \
-  ipv4.dns 172.24.254.254 \
-  ipv4.method manual
-```
+   ```bash
+   nmcli connection modify <CONN_NAME> \
+     ipv4.addresses 172.24.X.5/24 \
+     ipv4.gateway 172.24.X.254 \
+     ipv4.dns 172.24.254.254 \
+     ipv4.method manual
+   ```
 
 3. Set hostname
-```bash
-hostnamectl set-hostname node1.domainX.example.com
-```
+   ```bash
+   hostnamectl set-hostname node1.domainX.example.com
+   ```
 
 4. Apply the connection settings
-```bash
-nmcli connection down <CONN_NAME>
-nmcli connection up <CONN_NAME>
-```
+   ```bash
+   nmcli connection down <CONN_NAME>
+   nmcli connection up <CONN_NAME>
+   ```
 
 5. Verify
-```bash
-1. ip a
-2. ping -c 3 google.com
-3. hostnamectl
-```
+   ```bash
+   1. ip a
+   2. ping -c 3 google.com
+   3. hostnamectl
+   ```
 
 
 ###########################################################################################################
