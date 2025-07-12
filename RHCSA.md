@@ -455,7 +455,37 @@ Apache service is not responding on port `18989/tcp`. Configure the system so it
     Listen 18989
     ```
 
-3. 
+3. Restart and enable Apache
+   ```bash
+   systemctl restart httpd
+   systemctl enable httpd
+   ```
+
+4. Allow the port in SELinux
+   ```bash
+   semanage port -a -t http_port_t -p tcp 18989
+   ```
+
+5. Update firewall rules
+   ```bash
+   firewall-cmd --permanent --add-port=18989/tcp
+   firewall-cmd --reload
+   firewall-cmd --list-all
+   ```
+
+6. Verify SELinux port mapping
+   ```bash
+   semanage port -l | grep http
+   ```
+
+7. Test in browser or with Firefox
+   ```bash
+   firefox http://yourfulldomainname:18989
+   ```
+
+💡 To test with GUI apps like Firefox over SSH, use ssh -X to enable X11 forwarding.
+
+
 
 
 
