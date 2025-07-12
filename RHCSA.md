@@ -399,6 +399,24 @@ tar -cvzf /my_backup.tar.gz /usr/local
 - .bz2 → bzip2 (-j)
 - .xz → xz (-J)
 
+###########################################################################################################
+
+## 🔍 13. Find Words Starting with `ich` and Save to `/root/result.txt`
+
+Find all words that **start with "ich"** from the file `/usr/share/dict/words` and save the matching lines to `/root/result.txt`.
+
+## Ans:
+
+### 🧪 Command to Extract and Save the Words
+
+```bash
+grep ^ich /usr/share/dict/words > /root/result.txt
+```
+
+- 🔤 ^ich matches lines that start with "ich"
+- 📁 Output is redirected to /root/result.txt
+
+###########################################################################################################
 
 
 
