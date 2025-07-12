@@ -283,4 +283,72 @@ Create a new logical volume named `datastore` inside the volume group `database`
      :wq
      ```
 
-8. 
+8. Mount all entries
+   ```bash
+   mount -a
+   ```
+
+9. Confirm
+   ```bash
+   df -h
+   ```
+###########################################################################################################
+
+## 🎛️ 5. Set Tuned Profile to Recommended
+
+Change the system’s Tuned profile to the one suggested under the **recommended** category.
+
+### 📁 Configuration Details
+
+- Use `tuned-adm` to list and identify recommended profile
+- Enable and start the `tuned` service
+- Apply the recommended profile (e.g., `virtual-guest`)
+
+> 🛠️ **Ensure**
+> - Tuned is installed and running
+> - The system is set to use the recommended tuned profile
+> - The change is persistent across reboots
+
+---
+
+## ✅ Verification Steps
+
+1. Run `tuned-adm recommend` to identify the recommended profile.
+2. Use `tuned-adm active` to confirm the currently active profile.
+3. Confirm service is enabled with `systemctl is-enabled tuned`.
+
+## Ans:
+
+1. Install tuned package
+   ```bash
+   yum install tuned -y
+   ```
+
+2. Enable and start the service
+   ```bash
+   systemctl enable tuned
+   systemctl start tuned
+   ```
+   
+3. List available tuned profiles
+   ```bash
+   tuned-adm list
+   ```
+
+4. Display the recommended profile
+   ```bash
+   tuned-adm recommend
+   ```
+
+5. Show the currently active profile
+   ```bash
+   tuned-adm active
+   ```
+
+6. Set the recommended profile (example: virtual-guest)
+   ```bash
+   tuned-adm profile virtual-guest
+   ```
+
+###########################################################################################################
+
