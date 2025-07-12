@@ -488,13 +488,6 @@ Apache service is not responding on port `18989/tcp`. Configure the system so it
 ###########################################################################################################
 
 
-# Section 2
-
-
-> ⚠️ **Note:**  
-> Break root password as given in *Additional Configuration*.  
-> **Do not touch Network Settings of Node2.**
-
 
 
 
