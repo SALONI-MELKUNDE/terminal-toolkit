@@ -275,9 +275,13 @@ The user **Natasha** must configure a cron job that runs **daily at 06:25 local 
    ```
    
 ### 🔁 If the same job is to run every minute from 06:00 to 06:59:
-    ```bash
-    */1 06 * * * /bin/echo Hello_World
-    ```
+   ```bash
+   */1 06 * * * /bin/echo Hello_World
+   ```
+
+###########################################################################################################
+
+
 
 
 
