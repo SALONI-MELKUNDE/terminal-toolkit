@@ -281,6 +281,30 @@ The user **Natasha** must configure a cron job that runs **daily at 06:25 local 
 
 ###########################################################################################################
 
+## 🗂️ 9. Copy and Configure Permissions for `/var/tmp/fstab`
+
+Copy the file `/etc/fstab` to `/var/tmp`. Configure the permissions of `/var/tmp/fstab` so that:
+
+- The file `/var/tmp/fstab` is **owned by the root user**.
+- The file belongs to the **group root**.
+- The file is **not executable by anyone**.
+- The user **Natasha** can **read and write** to `/var/tmp/fstab`.
+- The user **Harry** can **neither read nor write** to `/var/tmp/fstab`.
+- **All other users** (current or future) can **read** `/var/tmp/fstab`.
+
+## Ans:
+
+### 🧪 Steps to Copy and Set ACL Permissions
+
+```bash
+cp /etc/fstab /var/tmp/
+
+setfacl -m u:natasha:rw- /var/tmp/fstab
+setfacl -m u:harry:---   /var/tmp/fstab
+setfacl -m o::r--        /var/tmp/fstab
+
+getfacl /var/tmp/fstab
+```
 
 
 
