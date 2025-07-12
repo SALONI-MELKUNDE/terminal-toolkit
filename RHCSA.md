@@ -305,7 +305,49 @@ setfacl -m o::r--        /var/tmp/fstab
 
 getfacl /var/tmp/fstab
 ```
+###########################################################################################################
 
+## 🕒 10. Configure System as an NTP Client of `classroom.example.com`
+
+Configure your system so that it synchronizes time with the NTP server `classroom.example.com`.
+
+> 🛠️ **Ensure**
+> - The server is added to `chrony.conf`
+> - The chronyd service is restarted
+> - Time synchronization is verified
+
+## Ans:
+
+### 🧪 Steps to Configure NTP Client
+
+1. Edit the chrony configuration file
+   ```bash
+   vim /etc/chrony.conf
+   ```
+
+2. Update the configuration
+   - Comment out any existing server lines (add # at the beginning).
+   - Add the new server:
+     ```bash
+     server classroom.example.com iburst
+     ```
+     
+3. Save and exit
+   ```bash
+   :wq
+   ```
+
+4. Restart chronyd service
+   ```bash
+   systemctl restart chronyd.service
+   ```
+
+5. Check if time is synchronized
+   ```bash
+   timedatectl
+   ```
+
+6. 
 
 
 
