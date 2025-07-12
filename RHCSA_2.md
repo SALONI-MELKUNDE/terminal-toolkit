@@ -352,13 +352,7 @@ Change the system’s Tuned profile to the one suggested under the **recommended
 
 ###########################################################################################################
 
-ChatGPT said:
-Here is the Markdown (.md) formatted version of Question 7: Create /srv/web directory and prepare it for container use, following your reference layout:
-
-markdown
-Copy
-Edit
-## 📁 7. Prepare Persistent Storage for Rootless Container
+## 📁 6. Prepare Persistent Storage for Rootless Container
 
 Create a directory `/srv/web` and extract the archive from `/home/containers/web-content.gz` into it.  
 Configure the directory so that a **rootless container** can use it for persistent storage.  
@@ -414,3 +408,36 @@ Install `container-tools` and `podman`.
    yum module install container-tools -y
    yum install podman -y
    ```
+
+###########################################################################################################
+
+## 🐳 8. Deploy Apache HTTP Container Using Podman
+
+Using the `containers` user, deploy an Apache HTTP server container named `web` with the following specifications.
+
+### 📦 Deployment Details
+
+- **Image**: `registry.lab.example.com/rhel8/httpd-24:1-105`
+- **Container Name**: `web`
+- **Port Mapping**: Host port `8888` → Container port `8080`
+- **Volume Mount**: Host path `/srv/web` → Container path `/var/www`
+- **Environment Variable**: `HTTPD_MPM=event`
+- **Startup Behavior**: Configure `systemd` to start the container at boot (user service)
+
+> 🛠️ **Ensure**
+> - The container runs in **detached mode**
+> - It uses the correct image with tag `1-105`
+> - Volume mount and port mapping are correctly applied
+> - Environment variable is passed
+> - `systemd --user` service is created for auto-start
+
+
+## ✅ Verification Steps
+
+1. Run `podman ps` to confirm the container is running.
+2. Use `curl localhost:8888` to check if Apache is serving.
+3. Reboot and ensure the container starts via `systemctl --user status container-web`.
+
+## Ans:
+
+
