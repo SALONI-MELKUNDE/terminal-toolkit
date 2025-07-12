@@ -352,3 +352,65 @@ Change the system’s Tuned profile to the one suggested under the **recommended
 
 ###########################################################################################################
 
+ChatGPT said:
+Here is the Markdown (.md) formatted version of Question 7: Create /srv/web directory and prepare it for container use, following your reference layout:
+
+markdown
+Copy
+Edit
+## 📁 7. Prepare Persistent Storage for Rootless Container
+
+Create a directory `/srv/web` and extract the archive from `/home/containers/web-content.gz` into it.  
+Configure the directory so that a **rootless container** can use it for persistent storage.  
+Install `container-tools` and `podman`.
+
+### 📦 Task Requirements
+
+- Extract HTML content from `/home/containers/web-content.gz` to `/srv/web`
+- Make the directory owned by user/group `containers`
+- Install necessary container tools
+
+> 🛠️ **Ensure**
+> - Ownership is set properly (`containers:`)  
+> - Directory exists and contains `html` subdirectory  
+> - Podman and container-tools are installed  
+> - Suitable for rootless container mounting
+
+## ✅ Verification Steps
+
+1. Run `ls -ld /srv/web` to check ownership and permissions.
+2. Confirm `html` directory exists inside `/srv/web`.
+3. Verify container-tools and `podman` are installed with `rpm -qa | grep podman`.
+
+## Ans:
+
+1. Create and navigate to the directory
+   ```bash
+   mkdir -pv /srv/web
+   cd /srv/web
+   ```
+2. Extract archive contents
+   ```bash
+   tar -xvzf /home/containers/web-content.gz
+   ```
+
+3. Verify extracted content (should include html/)
+   ```bash
+   ls
+   ```
+
+4. Set ownership to containers user/group
+   ```bash
+   chown -R containers: /srv/web
+   ```
+
+5. Confirm ownership and permissions
+   ```bash
+   ls -ld /srv/web
+   ```
+
+6. Install container tools and Podman
+   ```bash
+   yum module install container-tools -y
+   yum install podman -y
+   ```
