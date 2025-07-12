@@ -240,8 +240,19 @@ Find all files on the system that are owned by the user `student`, and copy them
 
 ## Ans:
 
+### 🧪 Steps to Locate and Copy Files of User `student`
 
-   
+1. **Create target directory**
+
+   ```bash
+   mkdir /var/liststationx
+   ```
+2. **Find and copy files owned by student**
+
+   ```bash
+   find / -user student -exec cp -avp {} /var/liststationx/ \;
+   ```
+
    
 
 
