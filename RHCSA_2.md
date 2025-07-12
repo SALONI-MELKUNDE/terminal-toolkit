@@ -211,6 +211,76 @@ It should be able to store data between **765MB to 800MB** safely.
 
 ###########################################################################################################
 
+## 📂 4. Create Logical Volume `datastore` in VG `database`
 
+Create a new logical volume named `datastore` inside the volume group `database` with the following requirements:
 
+### 📁 Configuration Details
 
+- Create a partition of **1 GB** on `/dev/vdb` (type `8e`)
+- Initialize it as a physical volume
+- Volume group name: `database` with physical extent size **16 MB**
+- Logical volume: `datastore` of **50 extents** or **800 MB**
+- Format it with **VFAT**
+- Mount it at `/common/classes`
+- Ensure it auto-mounts after reboot via `/etc/fstab`
+
+> 🛠️ **Ensure**
+> - Logical volume is created with `50` extents or `800M`  
+> - Physical extent size is set to `16M` during VG creation  
+> - Filesystem type is **VFAT**
+> - Entry in `/etc/fstab` ensures persistence after reboot
+
+## ✅ Verification Steps
+
+1. Run `lvdisplay` and `df -h` to verify logical volume and mount.
+2. Use `mount -a` to check for errors in `/etc/fstab`.
+3. Reboot and confirm the mount persists.
+
+## Ans:
+
+1. Create partition of 1GB on /dev/vdb and set type to 8e (Linux LVM)
+   ```bash
+   fdisk /dev/vdb
+   ```
+
+2. Initialize physical volume
+   ```bash
+   pvcreate /dev/vdb3
+   ```
+
+3. Create volume group with 16MB extent size
+   ```bash
+   vgcreate -s 16M database /dev/vdb3
+   ```
+
+4. Create logical volume with 50 extents
+   ```bash
+   lvcreate -n datastore -l 50 database
+   ```
+   Or alternatively:
+   ```bash
+   lvcreate -n datastore -L 800M database
+   ```
+   
+5. Format with vfat filesystem
+   ```bash
+   mkfs.vfat /dev/database/datastore
+   ```
+
+6. Create mount point
+   ```bash
+   mkdir -p /common/classes
+   ```
+
+7. Add entry to /etc/fstab for automount
+   ```bash
+   vim /etc/fstab
+   ```
+   > - Add the following line:
+     ```bash
+     /dev/mapper/database-datastore  /common/classes  vfat  defaults 0 0
+     :wq
+     ```
+
+8. 
