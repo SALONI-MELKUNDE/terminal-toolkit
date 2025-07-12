@@ -64,4 +64,51 @@ Verify repo availability
 dnf repolist
 ```
 
+###########################################################################################################
+
+## 💾 2. Extend Swap Partition to 512M
+
+Extend a **swap partition** of size **512 MB** on `/dev/vdb` and ensure it is **automounted after reboot**.
+
+### 📁 Partition and Swap Details
+
+- **Disk**: `/dev/vdb`
+- **Partition**: `/dev/vdb2`
+- **Partition Type**: Linux swap (ID 82)
+- **Size**: +512M
+- **Mount Info**: `/etc/fstab` with UUID
+
+> 🛠️ **Ensure**
+> - The swap partition is exactly 512 MB  
+> - Proper partition type is used (`82`)  
+> - Entry is added in `/etc/fstab` using UUID  
+> - Swap is activated and persists after reboot
+
+## ✅ Verification Steps
+
+1. Use `lsblk` or `free -h` to check memory and swap.
+2. Use `swapon -s` or `df -h` to verify the partition.
+3. Reboot and confirm swap is active with `free -h`.
+
+## Ans:
+
+1. Check current memory and disk
+   ```bash
+   free -h
+   lsblk
+   ```
+
+2. Partition the disk
+   ```bash
+   fdisk /dev/vdb
+   ```
+
+- In fdisk prompt:
+- p       → print partitions
+- n       → new partition
+-          → First Sector: <Enter>
+-          → Last Sector: +512M
+- t       → type → 82 (Linux swap)
+- w       → write changes
+
 
